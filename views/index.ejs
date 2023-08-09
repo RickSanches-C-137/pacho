@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- Include Heroicons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@heroicons/vue@1.0.4/dist/heroicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Adjust spacing and padding as needed */
+      .nav-active {
+        display: block;
+      }
+      .nav-hidden {
+        display: none;
+      }
+      .carousel-container {
+        width: 100%;
+        max-width: 100%; /* Adjust as needed */
+        margin: 0 auto;
+      }
+
+      .carousel-track {
+        display: flex;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .carousel-slide {
+        flex: 0 0 100%; /* Each slide occupies full width */
+        /* padding: 2rem; */
+        background-color: #f2f2f2;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100">
+    <nav class="bg-gray-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <div class="flex-shrink-0">
+            <!-- Logo or Branding -->
+            <a href="#" class="text-white font-bold text-xl">Your Logo</a>
+          </div>
+          <div class="hidden md:block">
+            <!-- Navbar links -->
+            <ul class="ml-4 flex space-x-4">
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white">Home</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white">About</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white">Services</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-300 hover:text-white">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Mobile menu button -->
+          <div class="md:hidden">
+            <button
+              id="mobile-menu-button"
+              class="text-white focus:outline-none"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="carousel-container relative overflow-hidden">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img
+            src="https://cdn.pixabay.com/photo/2022/05/08/02/38/trading-7181178_1280.jpg"
+            alt="Slide 1"
+            class="w-full h-4/5"
+          />
+        </div>
+        <div class="carousel-slide">
+          <img
+            src="https://cdn.pixabay.com/photo/2018/01/15/09/35/bitcoin-3083578_1280.jpg"
+            alt="Slide 2"
+            class="w-full h-auto"
+          />
+        </div>
+        <div class="carousel-slide">
+          <img
+            src="https://cdn.pixabay.com/photo/2021/09/04/03/00/stock-6596910_1280.jpg"
+            alt="Slide 3"
+            class="w-full h-auto"
+          />
+        </div>
+        <!-- Add more slides as needed -->
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.querySelector(".nav-hidden");
+
+    mobileMenuButton.addEventListener("click", () => {
+      mobileMenu.classList.toggle("nav-active");
+    });
+    const track = document.querySelector(".carousel-track");
+    const slides = Array.from(document.querySelectorAll(".carousel-slide"));
+    let slideWidth = slides[0].clientWidth; // Adjust the width based on image dimensions
+
+    let index = 0;
+
+    function updateTrack() {
+      track.style.transform = `translateX(-${index * slideWidth}px)`;
+    }
+
+    // Next slide
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      updateTrack();
+    }
+
+    // Previous slide
+    function prevSlide() {
+      index = (index - 1 + slides.length) % slides.length;
+      updateTrack();
+    }
+
+    // Automatically advance to the next slide
+    setInterval(nextSlide, 5000); // Adjust the interval as needed
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</html>

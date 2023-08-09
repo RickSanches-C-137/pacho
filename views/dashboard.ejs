@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- Include Heroicons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@heroicons/vue@1.0.4/dist/heroicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex items-center justify-between mb-6">
+        <h1 class="text-3xl font-semibold">Dashboard</h1>
+        <div class="flex items-center">
+          <span class="text-gray-600 text-sm mr-4"
+            >Welcome back,
+            <span class="font-bold"><%= user.firstName %></span></span
+          >
+          <button
+            class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none"
+            onclick="logout()"
+          >
+            Logout
+          </button>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <a href="/add-result">
+          <div class="p-4 bg-white rounded-md shadow-md flex items-center">
+            <svg
+              class="w-6 h-6 text-indigo-500 mr-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              ></path>
+            </svg>
+
+            <div>
+              <h2 class="text-xl font-semibold mb-4">Add Result</h2>
+              <p class="text-gray-700">Add new results to the system.</p>
+            </div>
+          </div>
+        </a>
+        <a href="/courses">
+          <div class="p-4 bg-white rounded-md shadow-md flex items-center">
+            <svg
+              class="w-6 h-6 text-indigo-500 mr-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              ></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 12a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+            <div>
+              <h2 class="text-xl font-semibold mb-4">Courses</h2>
+              <p class="text-gray-700">
+                View and Edit existing results in the system.
+              </p>
+            </div>
+          </div>
+        </a>
+
+        <a href="/filter">
+          <div class="p-4 bg-white rounded-md shadow-md flex items-center">
+            <svg
+              class="w-6 h-6 text-indigo-500 mr-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 10h16M4 14h16M4 18h16"
+              ></path>
+            </svg>
+            <div>
+              <h2 class="text-xl font-semibold mb-4">Result Display</h2>
+              <p class="text-gray-700">Display the results on a public page.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </body>
+  <script>
+    function logout() {
+      window.location.href = "/logout";
+    }
+  </script>
+</html>
